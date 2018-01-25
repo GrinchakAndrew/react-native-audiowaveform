@@ -1,10 +1,5 @@
-/**
- * Created by juanjimenez on 07/12/2016.
- * Otomogroove ltd 2017
- */
-
 'use strict';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Platform,
     DeviceEventEmitter,
@@ -14,62 +9,62 @@ import {
     View,
     requireNativeComponent
 } from 'react-native';
-import PropTypes form 'prop-types'
+import PropTypes from 'prop-types'
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 
-export default class WaveForm extends Component{
+export default class WaveForm extends Component {
     static propTypes = {
         ...View.propTypes,
-        autoPlay:React.PropTypes.bool,
-        waveFormStyle:PropTypes.shape({
-            waveColor: React.PropTypes.string,
-            scrubColor: React.PropTypes.string
-         }),
-        componentID:PropTypes.string,
+        autoPlay: PropTypes.bool,
+        waveFormStyle: PropTypes.shape({
+            waveColor: PropTypes.string,
+            scrubColor: PropTypes.string
+        }),
+        componentID: PropTypes.string,
         src: PropTypes.shape({
             uri: PropTypes.string,
             isNetwork: PropTypes.bool,
-            isAsset:PropTypes.bool,
+            isAsset: PropTypes.bool,
         }),
         source: PropTypes.oneOfType([
             PropTypes.shape({
                 uri: PropTypes.string
             }),
-             // Opaque type returned by require('./video.mp4')
-             PropTypes.number
-            ]),
-        play:PropTypes.bool,
-        stop:PropTypes.bool,
-        pause:PropTypes.bool,
-        volume:PropTypes.number,
-        onPress:PropTypes.func,
-        pressed:PropTypes.bool,
+            // Opaque type returned by require('./video.mp4')
+            PropTypes.number
+        ]),
+        play: PropTypes.bool,
+        stop: PropTypes.bool,
+        pause: PropTypes.bool,
+        volume: PropTypes.number,
+        onPress: PropTypes.func,
+        pressed: PropTypes.bool,
 
     }
-    _makeid()
-{
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    _makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    return text;
-}
+        return text;
+    }
 
-    _onPress(e:Event) {
-
-        if(Platform.OS == 'ios'){
+    _onPress = (e: Event) => {
+        console.log(e)
+        console.log(this)
+        if (Platform.OS == 'ios') {
             if (!this.props.onPress) {
                 return;
             }
 
 
-            this.props.onPress(e) && this.props.onPress;
+            this.props.onPress();
 
-        }else{
-            if(e.componentID == this.state.componentID){
+        } else {
+            if (e.componentID == this.state.componentID) {
                 if (!this.props.onPress) {
                     return;
                 }
@@ -83,13 +78,13 @@ export default class WaveForm extends Component{
 
     }
     componentWillMount() {
-        DeviceEventEmitter.addListener('OGOnPress', (e) => this._onPress(e));
+        // DeviceEventEmitter.addListener('OGOnPress', (e) => this._onPress(e));
         const componentID = this._makeid();
-        this.setState({componentID: componentID})
+        this.setState({ componentID: componentID })
 
     }
 
-    render () {
+    render() {
         const source = resolveAssetSource(this.props.source) || {};
 
         let uri = source.uri;
@@ -105,29 +100,25 @@ export default class WaveForm extends Component{
 
         const nativeProps = Object.assign({}, this.props);
         Object.assign(nativeProps, {
-            autoPlay:this.props.autoPlay,
-            waveFormStyle:{
-                ogWaveColor:processColor(this.props.waveFormStyle.waveColor),
-                ogScrubColor:processColor(this.props.waveFormStyle.scrubColor),
+            autoPlay: this.props.autoPlay,
+            waveFormStyle: {
+                ogWaveColor: processColor(this.props.waveFormStyle.waveColor),
+                ogScrubColor: processColor(this.props.waveFormStyle.scrubColor),
             },
 
             src: {
-                uri:uri,
-                isNetwork:isNetwork,
-                isAsset:isAsset,
+                uri: uri,
+                isNetwork: isNetwork,
+                isAsset: isAsset,
                 type: source.type,
                 mainVer: source.mainVer || 0,
                 patchVer: source.patchVer || 0,
             },
-            componentID:this.state.componentID,
+            componentID: this.state.componentID,
         });
 
         return <OGWaverformView {...nativeProps} onPress={this._onPress} />;
     }
 };
 
-const OGWaverformView = requireNativeComponent('OGWave' , WaveForm)
-
-
-
-
+const OGWaverformView = requireNativeComponent('OGWave', WaveForm)

@@ -49,9 +49,11 @@
       "/Users/juanjimenez/otomogroove_projects/wavetest/wavetest"
     ]
   ],
-  "_from": "react-native-audiowaveform@^1.0.471",
-  "_id": "react-native-audiowaveform@1.0.471",
+  "_from": "react-native-audiowaveform",
+  "_id": "react-native-audiowaveform@1.0.51",
+  "_inBundle": false,
   "_inCache": true,
+  "_integrity": "sha1-Jky6Ghg/BpCtB1pMOlykJRIg2Ns=",
   "_location": "/react-native-audiowaveform",
   "_nodeVersion": "7.4.0",
   "_npmOperationalInternal": {
@@ -65,29 +67,33 @@
   "_npmVersion": "4.0.5",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "react-native-audiowaveform@^1.0.471",
-    "scope": null,
-    "escapedName": "react-native-audiowaveform",
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-audiowaveform",
     "name": "react-native-audiowaveform",
-    "rawSpec": "^1.0.471",
-    "spec": ">=1.0.471 <2.0.0",
-    "type": "range"
+    "escapedName": "react-native-audiowaveform",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/react-native-audiowaveform/-/react-native-audiowaveform-1.0.471.tgz",
-  "_shasum": "edffd87c688ba4e92955eadd527538f6ac7b282f",
+  "_resolved": "https://registry.npmjs.org/react-native-audiowaveform/-/react-native-audiowaveform-1.0.51.tgz",
+  "_shasum": "264cba1a183f0690ad075a4c3a5ca4251220d8db",
   "_shrinkwrap": null,
-  "_spec": "react-native-audiowaveform@^1.0.471",
-  "_where": "/Users/juanjimenez/otomogroove_projects/wavetest/wavetest",
+  "_spec": "react-native-audiowaveform",
+  "_where": "/Users/berezynskyi/Documents/work/trm_app",
   "author": {
     "name": "Otomogroove 2017"
   },
   "bugs": {
     "url": "https://github.com/juananime/react-native-audiowaveform/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {},
+  "deprecated": false,
   "description": "Audio Waveform visualization and sound renderization for React Native",
   "devDependencies": {},
   "directories": {},
@@ -114,9 +120,8 @@
   "name": "react-native-audiowaveform",
   "optionalDependencies": {},
   "peerDependencies": {
-    "react-native": "^0.29.0"
+    "react-native": "0.49.3"
   },
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juananime/react-native-audiowaveform.git"

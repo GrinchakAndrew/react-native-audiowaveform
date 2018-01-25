@@ -99,11 +99,7 @@
 }
 
 -(void)setPlay:(BOOL)play{
-    if(play){
-        [self playAudio];
-    }else{
-        [self pauseAudio];
-    }
+    _play=play;
 }
 
 -(void)pauseAudio{
@@ -446,7 +442,7 @@
 
 #pragma mark OGWaveDelegateProtocol
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+    [self playAudio];
     [_delegate OGWaveOnTouch:self];
 }
 

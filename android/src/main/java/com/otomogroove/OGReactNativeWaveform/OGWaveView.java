@@ -64,16 +64,13 @@ public class OGWaveView extends FrameLayout {
     }
 
     public void onPlay(boolean play){
-        if(play){
-            this.mMediaPlayer.start();
-
-
+        if(play && !this.mMediaPlayer.equals(null)){
+             this.mMediaPlayer.start();
         }else{
-            if(mMediaPlayer.isPlaying())
-                    mMediaPlayer.pause();
-
+            if(!mMediaPlayer.equals(null) && mMediaPlayer.isPlaying()){
+                mMediaPlayer.pause();
+            }                   
         }
-
         progressReportinghandler.postDelayed(progressRunnable, 500);
 
     }

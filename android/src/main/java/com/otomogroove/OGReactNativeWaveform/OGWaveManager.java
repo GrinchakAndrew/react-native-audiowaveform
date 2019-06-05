@@ -105,12 +105,10 @@ public class OGWaveManager extends SimpleViewManager<OGWaveView> implements Life
     }
     @ReactProp(name = "play")
     public void setPlay(OGWaveView view, @Nullable boolean play) {
-
-            view.onPlay(play);
-
+            if((!view.equals(null)) && play){
+                view.onPlay(play);
+            }
     }
-
-
 
    /** @ReactProp(name = "pause")
     public void setPause(OGWaveView view, @Nullable Callback pause){
